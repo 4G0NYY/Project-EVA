@@ -1,0 +1,14 @@
+tensorflow
+numpy 
+matplotlib.pyplot
+os
+datetime
+urllib3
+dateutil.parser
+threading
+itertools
+sklearn.metrics
+pandas
+random
+xgboost
+sklearn.externals
