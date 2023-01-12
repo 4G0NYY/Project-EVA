@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import urllib3
 
-download_all()
+download_all()      #<-- Download all of the stock index
 
 SEED = 42
 tf.set_random_seed(SEED)
