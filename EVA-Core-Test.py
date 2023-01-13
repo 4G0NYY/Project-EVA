@@ -243,9 +243,9 @@ class Predict:
         self.gan_model = gan_model
         self.cnn_modle = cnn_modle
         self.xgb_model = xgb_model
-        # assert os.path.exists(gan_model)
-        # assert os.path.exists(cnn_modle)
-        # assert os.path.exists(xgb_model)
+        assert os.path.exists(gan_model)
+        assert os.path.exists(cnn_modle)
+        assert os.path.exists(xgb_model)    #<-- Asserts the xgb, cnn and gan models to the right path in the OS (I think?)
 
         files = [os.path.join('./stock_data', f) for f in os.listdir('./stock_data')]
         for file in files:
@@ -272,9 +272,8 @@ class Predict:
             for sym, date, data in self.data:
 	            features = sess.run(gan.features, feed_dict={gan.X:[data]})
 	            features = xgb.DMatrix(features)
-	            print('{} {} {}'.format(str(date).split(' ')[0], sym, clf.predict(features)[0][1] > 0.5))
+	            print('{} {} {}'.format(str(date).split(' ')[0], sym, clf.predict(features)[0][1] > 0.5))       #<-- wtf why is python bitching about the spaces and tabs here
 	            
-
 
 if __name__ == '__main__':
 	p = Predict()
