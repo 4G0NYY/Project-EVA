@@ -9,6 +9,8 @@ from sklearn.externals import joblib
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import urllib3
+import requests
+import json
 
 download_all()      #<-- Download all of the stock index
 
