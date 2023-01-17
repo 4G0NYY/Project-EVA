@@ -30,7 +30,7 @@ url = 'https://api.crypto-wallet.com/v1/transactions'
 address = '0x1234567890abcdef'
 
 # Recipient address
-recipient = 
+recipient =  
 
 # Amount of crypto to send
 amount = 
