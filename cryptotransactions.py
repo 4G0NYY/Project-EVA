@@ -30,3 +30,6 @@ else:
     # Print out transaction information
     tx_id = data['transaction_id']
     print(f'Transaction ID: {tx_id}')
+
+
+#I don't believe I'll still be needing this, since I imported the other Cryptotransaction-API-thingy. I'll still leave this in here, so if you want to fix this, feel free to do so ;)
