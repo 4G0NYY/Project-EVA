@@ -286,7 +286,7 @@ class nasdaq():
 		self.company_list = './companylist.csv'
 
 	def build_url(self, symbol):
-		url = 'https://www.quandl.com/api/v3/datasets/WIKI/{}.csv?api_key={}'.format(symbol, quandl_api_key)
+		url = 'https://www.quandl.com/api/v3/datasets/WIKI/{}.csv?api_key={}'.format(symbol, quandl_api_key) #quandale dingle here (inaudible laughter)
 		return url
 
 	def symbols(self):
