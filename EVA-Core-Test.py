@@ -1,5 +1,3 @@
-import yfinance as yf
-from newspaper import Article
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,9 +6,6 @@ import random
 from sklearn.externals import joblib
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
-import urllib3
-import requests
-import json
 
 download_all()      #<-- Download all of the stock index
 
