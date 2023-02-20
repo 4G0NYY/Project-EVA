@@ -20,3 +20,5 @@ else:
     # Print out balance
     balance = data['balance']
     print(f'Balance: {balance}')
+
+#most certainly obsolete too, but oh well
