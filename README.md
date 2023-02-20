@@ -6,7 +6,7 @@ The profit margin can, of course, be changed to anyones liking.
 
 My goal is to create an AI which will exactly predict the Stock market and then handle this information accordingly.
 
-Also, I'm planning on doing all of this project in python, for the simple fact that it's sooo much easier than for example C# or C in general (my opinion).
+Welp, I wanted to do this project in python, but it seems like I've slipped into C#... Whoopsie 
 
 I'm building 2 different implementations, one that works with crypto wallets and the other one? I don't even know . . .
 
