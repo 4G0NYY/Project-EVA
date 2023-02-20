@@ -3,6 +3,8 @@ from newspaper import Article
 import requests
 import json
 
+#I will most certainly not update this first implementation, since it is absolutly obsolete and I'd have to put in way more time than I'd ever like to
+
 # API endpoint for getting wallet balance
 url = 'https://api.crypto-wallet.com/v1/balance'
 
