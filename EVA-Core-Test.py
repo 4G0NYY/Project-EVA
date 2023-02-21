@@ -477,11 +477,6 @@ class TrainGan:
             #Read in file -- note that parse_dates will be need later
             df = pd.read_csv(file, index_col='Date', parse_dates=True)
             df = df[['Open','High','Low','Close','Volume']]
-            # #Create new index with missing days
-            # idx = pd.date_range(df.index[-1], df.index[0])
-            # #Reindex and fill the missing day with the value from the day before
-            # df = df.reindex(idx, method='bfill').sort_index(ascending=False)
-            #Normilize using a of size num_historical_days
             df = ((df -
             df.rolling(num_historical_days).mean().shift(-num_historical_days))
             /(df.rolling(num_historical_days).max().shift(-num_historical_days)
@@ -533,19 +528,12 @@ class TrainGan:
                 G_l2_loss += G_l2_loss_curr
             if (i+1) % print_steps == 0:
                 print('Step={} D_loss={}, G_loss={}'.format(i, D_loss/print_steps - D_l2_loss/print_steps, G_loss/print_steps - G_l2_loss/print_steps))
-                #print('D_l2_loss = {} G_l2_loss={}'.format(D_l2_loss/print_steps, G_l2_loss/print_steps))
                 G_loss = 0
                 D_loss = 0
                 G_l2_loss = 0
                 D_l2_loss = 0
             if (i+1) % save_steps == 0:
                 saver.save(sess, './models/gan.ckpt', i)
-            # if (i+1) % display_data == 0:
-            #     print('Generated Data')
-            #     print(sess.run(self.gan.gen_data, feed_dict={self.gan.Z:self.gan.sample_Z(1, 200)}))
-            #     print('Real Data')
-            #     print(X[0])
-
 
 if __name__ == '__main__':
     gan = TrainGan(20, 128)
@@ -577,10 +565,6 @@ class TrainXGBBoost:
                 df = pd.read_csv(file, index_col='Date', parse_dates=True)
                 df = df[['Open','High','Low','Close','Volume']]
                 # #Create new index with missing days
-                # idx = pd.date_range(df.index[-1], df.index[0])
-                # #Reindex and fill the missing day with the value from the day before
-                # df = df.reindex(idx, method='bfill').sort_index(ascending=False)
-                #Normilize using a of size num_historical_days
                 labels = df.Close.pct_change(days).map(lambda x: int(x > pct_change/100.0))
                 df = ((df -
                 df.rolling(num_historical_days).mean().shift(-num_historical_days))
@@ -620,11 +604,6 @@ class TrainXGBBoost:
         params['subsample'] = 0.05
         params['colsample_bytree'] = 0.05
         params['eval_metric'] = 'mlogloss'
-        #params['scale_pos_weight'] = 10
-        #params['silent'] = True
-        #params['gpu_id'] = 0
-        #params['max_bin'] = 16
-        #params['tree_method'] = 'gpu_hist'
 
         train = xgb.DMatrix(self.data, self.labels)
         test = xgb.DMatrix(self.test_data, self.test_labels)
