@@ -1,3 +1,6 @@
+#OBSOLETE! DON'T USE THIS VERSION!
+
+
 import yfinance as yf
 from newspaper import Article
 import get_predictions
