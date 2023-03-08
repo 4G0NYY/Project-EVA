@@ -474,7 +474,6 @@ class TrainGan:
         files = [os.path.join('./stock_data', f) for f in os.listdir('./stock_data')]
         for file in files:
             print(file)
-            #Read in file -- note that parse_dates will be need later
             df = pd.read_csv(file, index_col='Date', parse_dates=True)
             df = df[['Open','High','Low','Close','Volume']]
             df = ((df -
