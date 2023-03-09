@@ -15,7 +15,6 @@ class CNN():
         self.keep_prob = tf.placeholder(tf.float32, shape=[])
 
         with tf.variable_scope("cnn"):
-            #[filter_height, filter_width, in_channels, out_channels]
             k1 = tf.Variable(tf.truncated_normal([3, 1, num_features, 16],
                 stddev=0.1,seed=SEED, dtype=tf.float32))
             b1 = tf.Variable(tf.zeros([16], dtype=tf.float32))
