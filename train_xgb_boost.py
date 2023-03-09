@@ -38,7 +38,6 @@ class TrainXGBBoost:
                 -df.rolling(num_historical_days).min().shift(-num_historical_days)))
                 df['labels'] = labels
                 df = df.dropna()
-                #Hold out the last year of trading for testing
                 test_df = df[:365]
                 #Padding to keep labels from bleeding
                 df = df[400:]
