@@ -37,7 +37,6 @@ class TrainXGBBoost:
                 /(df.rolling(num_historical_days).max().shift(-num_historical_days)
                 -df.rolling(num_historical_days).min().shift(-num_historical_days)))
                 df['labels'] = labels
-                #Drop the last 10 day that we don't have data for
                 df = df.dropna()
                 #Hold out the last year of trading for testing
                 test_df = df[:365]
