@@ -1,4 +1,0 @@
-*.backup
-bin/
-Makefile
-docker-compose.yml
