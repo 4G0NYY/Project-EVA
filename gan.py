@@ -35,11 +35,6 @@ class GAN():
 
             h2 = tf.nn.sigmoid(tf.matmul(h1, W2) + b2)
 
-            # v2, m2, beta2, gamma2 = get_batch_norm_with_global_normalization_vars(generator_output_size*5)
-            # h2 = tf.nn.batch_norm_with_global_normalization(h2, v2, m2,
-            #         beta2, gamma2, variance_epsilon=0.000001, scale_after_normalization=False)
-
-
             W3 = tf.Variable(tf.truncated_normal([generator_output_size*5, generator_output_size]))
             b3 = tf.Variable(tf.truncated_normal([generator_output_size]))
 
