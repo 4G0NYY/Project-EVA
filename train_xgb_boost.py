@@ -39,7 +39,6 @@ class TrainXGBBoost:
                 df['labels'] = labels
                 df = df.dropna()
                 test_df = df[:365]
-                #Padding to keep labels from bleeding
                 df = df[400:]
                 #mutliple of 7
                 data = df[['Open', 'High', 'Low', 'Close', 'Volume']].values
