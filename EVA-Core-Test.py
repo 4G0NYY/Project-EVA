@@ -173,29 +173,22 @@ class GAN():
             conv = tf.nn.conv2d(X,k1,strides=[1, 1, 1, 1],padding='SAME')
             relu = tf.nn.relu(tf.nn.bias_add(conv, b1))
             pool = relu
-            # pool = tf.nn.avg_pool(relu, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='SAME')
             if is_train:
                 pool = tf.nn.dropout(pool, keep_prob = 0.8)
-            # pool = tf.nn.batch_norm_with_global_normalization(pool, v1, m1,
-            #         beta1, gamma1, variance_epsilon=0.000001, scale_after_normalization=False)
             print(pool)
 
             conv = tf.nn.conv2d(pool, k2,strides=[1, 1, 1, 1],padding='SAME')
             relu = tf.nn.relu(tf.nn.bias_add(conv, b2))
             pool = relu
-            #pool = tf.nn.avg_pool(relu, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='SAME')
             if is_train:
                 pool = tf.nn.dropout(pool, keep_prob = 0.8)
-            # pool = tf.nn.batch_norm_with_global_normalization(pool, v2, m2,
-            #         beta2, gamma2, variance_epsilon=0.000001, scale_after_normalization=False)
             print(pool)
 
             conv = tf.nn.conv2d(pool, k3, strides=[1, 1, 1, 1], padding='VALID')
             relu = tf.nn.relu(tf.nn.bias_add(conv, b3))
             if is_train:
                 relu = tf.nn.dropout(relu, keep_prob=0.8)
-            # relu = tf.nn.batch_norm_with_global_normalization(relu, v3, m3,
-            #         beta3, gamma3, variance_epsilon=0.000001, scale_after_normalization=False)
+
             print(relu)
 
 
@@ -207,9 +200,6 @@ class GAN():
                 flattened_convolution =  tf.nn.dropout(flattened_convolution, keep_prob=0.8)
 
             h1 = tf.nn.relu(tf.matmul(flattened_convolution, W1) + b4)
-
-            # h1 = tf.nn.batch_norm_with_global_normalization(h1, v4, m4,
-            #         beta4, gamma4, variance_epsilon=0.000001, scale_after_normalization=False)
 
             D_logit = tf.matmul(h1, W2)
             D_prob = tf.nn.sigmoid(D_logit)
