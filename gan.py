@@ -86,8 +86,6 @@ class GAN():
             pool = relu
             if is_train:
                 pool = tf.nn.dropout(pool, keep_prob = 0.8)
-            # pool = tf.nn.batch_norm_with_global_normalization(pool, v2, m2,
-            #         beta2, gamma2, variance_epsilon=0.000001, scale_after_normalization=False)
             print(pool)
 
             conv = tf.nn.conv2d(pool, k3, strides=[1, 1, 1, 1], padding='VALID')
