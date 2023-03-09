@@ -92,8 +92,6 @@ class GAN():
             relu = tf.nn.relu(tf.nn.bias_add(conv, b3))
             if is_train:
                 relu = tf.nn.dropout(relu, keep_prob=0.8)
-            # relu = tf.nn.batch_norm_with_global_normalization(relu, v3, m3,
-            #         beta3, gamma3, variance_epsilon=0.000001, scale_after_normalization=False)
             print(relu)
 
 
