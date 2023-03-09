@@ -77,7 +77,6 @@ class GAN():
             conv = tf.nn.conv2d(X,k1,strides=[1, 1, 1, 1],padding='SAME')
             relu = tf.nn.relu(tf.nn.bias_add(conv, b1))
             pool = relu
-            # pool = tf.nn.avg_pool(relu, ksize=[1, 2, 1, 1], strides=[1, 2, 1, 1], padding='SAME')
             if is_train:
                 pool = tf.nn.dropout(pool, keep_prob = 0.8)
             print(pool)
