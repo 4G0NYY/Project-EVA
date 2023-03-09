@@ -5,7 +5,7 @@ import json
 
 url = 'https://api.crypto-wallet.com/v1/transactions' 
 
-# Wallet address
+
 address = '0x1234567890abcdef'
 
 # Recipient address
