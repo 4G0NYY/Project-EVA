@@ -242,7 +242,7 @@ class Predict:
         self.xgb_model = xgb_model
         assert os.path.exists(gan_model)
         assert os.path.exists(cnn_modle)
-        assert os.path.exists(xgb_model)    #<-- Asserts the xgb, cnn and gan models to the right path in the OS (I think?)
+        assert os.path.exists(xgb_model)   
 
         files = [os.path.join('./stock_data', f) for f in os.listdir('./stock_data')]
         for file in files:
