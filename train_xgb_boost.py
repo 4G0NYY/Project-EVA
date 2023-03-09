@@ -32,11 +32,6 @@ class TrainXGBBoost:
                 #Read in file -- note that parse_dates will be need later
                 df = pd.read_csv(file, index_col='Date', parse_dates=True)
                 df = df[['Open','High','Low','Close','Volume']]
-                # #Create new index with missing days
-                # idx = pd.date_range(df.index[-1], df.index[0])
-                # #Reindex and fill the missing day with the value from the day before
-                # df = df.reindex(idx, method='bfill').sort_index(ascending=False)
-                #Normilize using a of size num_historical_days
                 labels = df.Close.pct_change(days).map(lambda x: int(x > pct_change/100.0))
                 df = ((df -
                 df.rolling(num_historical_days).mean().shift(-num_historical_days))
