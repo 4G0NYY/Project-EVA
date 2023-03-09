@@ -1,6 +1,5 @@
 from get_stock_data import download_all
 
-#Download Stocks
 download_all()
 
 
