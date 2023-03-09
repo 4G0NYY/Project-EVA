@@ -41,7 +41,6 @@ class TrainXGBBoost:
                 test_df = df[:365]
                 #Padding to keep labels from bleeding
                 df = df[400:]
-                #This may not create good samples if num_historical_days is a
                 #mutliple of 7
                 data = df[['Open', 'High', 'Low', 'Close', 'Volume']].values
                 labels = df['labels'].values
