@@ -65,11 +65,6 @@ class TrainXGBBoost:
         params['subsample'] = 0.05
         params['colsample_bytree'] = 0.05
         params['eval_metric'] = 'mlogloss'
-        #params['scale_pos_weight'] = 10
-        #params['silent'] = True
-        #params['gpu_id'] = 0
-        #params['max_bin'] = 16
-        #params['tree_method'] = 'gpu_hist'
 
         train = xgb.DMatrix(self.data, self.labels)
         test = xgb.DMatrix(self.test_data, self.test_labels)
