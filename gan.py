@@ -41,9 +41,6 @@ class GAN():
             g_log_prob = tf.matmul(h2, W3) + b3
             g_log_prob = tf.reshape(g_log_prob, [-1, num_historical_days, 1, num_features])
             self.gen_data = tf.reshape(g_log_prob, [-1, num_historical_days, num_features])
-            #g_log_prob = g_log_prob / tf.reshape(tf.reduce_max(g_log_prob, axis=1), [-1, 1, num_features, 1])
-            #g_prob = tf.nn.sigmoid(g_log_prob)
-
             theta_G = [W1, b1, W2, b2, W3, b3]
 
 
