@@ -68,11 +68,6 @@ class TrainGan:
                 D_l2_loss = 0
             if (i+1) % save_steps == 0:
                 saver.save(sess, './models/gan.ckpt', i)
-            # if (i+1) % display_data == 0:
-            #     print('Generated Data')
-            #     print(sess.run(self.gan.gen_data, feed_dict={self.gan.Z:self.gan.sample_Z(1, 200)}))
-            #     print('Real Data')
-            #     print(X[0])
 
 
 if __name__ == '__main__':
