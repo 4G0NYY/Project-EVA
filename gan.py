@@ -104,9 +104,6 @@ class GAN():
 
             h1 = tf.nn.relu(tf.matmul(flattened_convolution, W1) + b4)
 
-            # h1 = tf.nn.batch_norm_with_global_normalization(h1, v4, m4,
-            #         beta4, gamma4, variance_epsilon=0.000001, scale_after_normalization=False)
-
             D_logit = tf.matmul(h1, W2)
             D_prob = tf.nn.sigmoid(D_logit)
             return D_prob, D_logit, features
