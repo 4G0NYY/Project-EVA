@@ -3,7 +3,7 @@ import json
 
 
 
-url = 'https://api.crypto-wallet.com/v1/transactions' #I will need to add an actual API endpoint for crypto transactions
+url = 'https://api.crypto-wallet.com/v1/transactions' 
 
 # Wallet address
 address = '0x1234567890abcdef'
