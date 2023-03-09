@@ -78,10 +78,6 @@ class CNN():
 
         self.loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.Y, logits=logits))
         tf.summary.scalar('loss', self.loss)
-        # self.D_l2_loss = (0.0001 * tf.add_n([tf.nn.l2_loss(t) for t in theta_D]) / len(theta_D))
-        # self.D_loss = D_loss_real + D_loss_fake + self.D_l2_loss
-        # self.G_l2_loss = (0.00001 * tf.add_n([tf.nn.l2_loss(t) for t in theta_G]) / len(theta_G))
-        # self.G_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=D_logit_fake, labels=tf.ones_like(D_logit_fake))) + self.G_l2_loss
 
         self.optimizer = tf.train.AdamOptimizer(learning_rate=0.0001).minimize(self.loss)
         self.summary = tf.summary.merge_all()
