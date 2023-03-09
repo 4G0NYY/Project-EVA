@@ -13,25 +13,14 @@ class TrainGan:
         files = [os.path.join('./stock_data', f) for f in os.listdir('./stock_data')]
         for file in files:
             print(file)
-            #Read in file -- note that parse_dates will be need later
             df = pd.read_csv(file, index_col='Date', parse_dates=True)
             df = df[['Open','High','Low','Close','Volume']]
-            # #Create new index with missing days
-            # idx = pd.date_range(df.index[-1], df.index[0])
-            # #Reindex and fill the missing day with the value from the day before
-            # df = df.reindex(idx, method='bfill').sort_index(ascending=False)
-            #Normilize using a of size num_historical_days
             df = ((df -
             df.rolling(num_historical_days).mean().shift(-num_historical_days))
             /(df.rolling(num_historical_days).max().shift(-num_historical_days)
             -df.rolling(num_historical_days).min().shift(-num_historical_days)))
-            #Drop the last 10 day that we don't have data for
             df = df.dropna()
-            #Hold out the last year of trading for testing
-            #Padding to keep labels from bleeding
             df = df[400:]
-            #This may not create good samples if num_historical_days is a
-            #mutliple of 7
             for i in range(num_historical_days, len(df), num_historical_days):
                 self.data.append(df.values[i-num_historical_days:i])
 
