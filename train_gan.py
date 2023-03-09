@@ -61,7 +61,6 @@ class TrainGan:
                 G_l2_loss += G_l2_loss_curr
             if (i+1) % print_steps == 0:
                 print('Step={} D_loss={}, G_loss={}'.format(i, D_loss/print_steps - D_l2_loss/print_steps, G_loss/print_steps - G_l2_loss/print_steps))
-                #print('D_l2_loss = {} G_l2_loss={}'.format(D_l2_loss/print_steps, G_l2_loss/print_steps))
                 G_loss = 0
                 D_loss = 0
                 G_l2_loss = 0
