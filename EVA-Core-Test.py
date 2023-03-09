@@ -560,21 +560,16 @@ class TrainXGBBoost:
             files = [os.path.join('./stock_data', f) for f in os.listdir('./stock_data')]
             for file in files:
                 print(file)
-                #Read in file -- note that parse_dates will be need later
                 df = pd.read_csv(file, index_col='Date', parse_dates=True)
                 df = df[['Open','High','Low','Close','Volume']]
-                # #Create new index with missing days
                 labels = df.Close.pct_change(days).map(lambda x: int(x > pct_change/100.0))
                 df = ((df -
                 df.rolling(num_historical_days).mean().shift(-num_historical_days))
                 /(df.rolling(num_historical_days).max().shift(-num_historical_days)
                 -df.rolling(num_historical_days).min().shift(-num_historical_days)))
                 df['labels'] = labels
-                #Drop the last 10 day that we don't have data for
                 df = df.dropna()
-                #Hold out the last year of trading for testing
                 test_df = df[:365]
-                #Padding to keep labels from bleeding
                 df = df[400:]
                 #This may not create good samples if num_historical_days is a
                 #mutliple of 7
