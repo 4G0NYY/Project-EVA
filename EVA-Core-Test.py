@@ -480,13 +480,8 @@ class TrainGan:
             df.rolling(num_historical_days).mean().shift(-num_historical_days))
             /(df.rolling(num_historical_days).max().shift(-num_historical_days)
             -df.rolling(num_historical_days).min().shift(-num_historical_days)))
-            #Drop the last 10 day that we don't have data for
             df = df.dropna()
-            #Hold out the last year of trading for testing
-            #Padding to keep labels from bleeding
             df = df[400:]
-            #This may not create good samples if num_historical_days is a
-            #mutliple of 7
             for i in range(num_historical_days, len(df), num_historical_days):
                 self.data.append(df.values[i-num_historical_days:i])
 
@@ -571,8 +566,6 @@ class TrainXGBBoost:
                 df = df.dropna()
                 test_df = df[:365]
                 df = df[400:]
-                #This may not create good samples if num_historical_days is a
-                #mutliple of 7
                 data = df[['Open', 'High', 'Low', 'Close', 'Volume']].values
                 labels = df['labels'].values
                 for i in range(num_historical_days, len(df), num_historical_days):
