@@ -65,8 +65,6 @@ class CNN():
             self.confusion_matrix = tf.confusion_matrix(tf.argmax(self.Y, 1), tf.argmax(logits, 1))
             tf.summary.scalar('accuracy', self.accuracy)
             theta_D = [k1, b1, k2, b2, k3, b3, W1, b4, W2]           
-            
-            # D_prob = tf.nn.sigmoid(D_logit)
 
         self.loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.Y, logits=logits))
         tf.summary.scalar('loss', self.loss)
