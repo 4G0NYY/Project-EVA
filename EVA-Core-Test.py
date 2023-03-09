@@ -435,7 +435,6 @@ class TrainCNN:
         if os.path.exists('./cnn_models/checkpoint'):
             with open('./cnn_models/checkpoint', 'rb') as f:
                 model_name = next(f).split('"')[1]
-            #saver.restore(sess, "./models/{}".format(model_name))
         for i, [X, y] in enumerate(self.random_batch(batch_size)):
             _, loss_curr, accuracy_curr = sess.run([self.cnn.optimizer, self.cnn.loss, self.cnn.accuracy], feed_dict=
                     {self.cnn.X:X, self.cnn.Y:y, self.cnn.keep_prob:keep_prob})
