@@ -40,7 +40,6 @@ class TrainXGBBoost:
                 df = df.dropna()
                 test_df = df[:365]
                 df = df[400:]
-                #mutliple of 7
                 data = df[['Open', 'High', 'Low', 'Close', 'Volume']].values
                 labels = df['labels'].values
                 for i in range(num_historical_days, len(df), num_historical_days):
