@@ -269,7 +269,7 @@ class Predict:
         for sym, date, data in self.data:
 	        features = sess.run(gan.features, feed_dict={gan.X:[data]})
 	        features = xgb.DMatrix(features)
-	print('{} {} {}'.format(str(date).split(' ')[0], sym, clf.predict(features)[0][1] > 0.5))       #<-- wtf why is python bitching about the spaces and tabs here
+	print('{} {} {}'.format(str(date).split(' ')[0], sym, clf.predict(features)[0][1] > 0.5))     
 	            
 
 if __name__ == '__main__':
@@ -286,7 +286,7 @@ class nasdaq():
 		self.company_list = './companylist.csv'
 
 	def build_url(self, symbol):
-		url = 'https://www.quandl.com/api/v3/datasets/WIKI/{}.csv?api_key={}'.format(symbol, quandl_api_key) #how high was I when I wrote this wtf
+		url = 'https://www.quandl.com/api/v3/datasets/WIKI/{}.csv?api_key={}'.format(symbol, quandl_api_key) 
 		return url
 
 	def symbols(self):
