@@ -2,7 +2,7 @@ import requests
 import json
 
 
-# API endpoint for making transactions
+
 url = 'https://api.crypto-wallet.com/v1/transactions' #I will need to add an actual API endpoint for crypto transactions
 
 # Wallet address
